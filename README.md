@@ -140,11 +140,11 @@ Compiling your contracts...
 
 These contracts have been deployed in Ropsten at the following addresses:
 
-Vault.sol: 0x764e1903b182a79Ad32972Da97Bb0372964709De
+Vault.sol: https://ropsten.etherscan.io/address/0x764e1903b182a79ad32972da97bb0372964709de
 
-Coin.sol: 0x7f4098b7971aF70BB65965104938052989237879
+Coin.sol: https://ropsten.etherscan.io/address/0x7f4098b7971af70bb65965104938052989237879
 
-PriceConsumerV3.sol: 0xFF76A8629617B12602AFF3e69d8A5147622bF97d
+PriceConsumerV3.sol: https://ropsten.etherscan.io/address/0xff76a8629617b12602aff3e69d8a5147622bf97d#code
 
 ## 7. TODO
 
@@ -152,6 +152,6 @@ PriceConsumerV3.sol: 0xFF76A8629617B12602AFF3e69d8A5147622bF97d
 - integrate smart contract functionalities within frontend
 - Work on UI/UX
 
-## References
+<!-- ## References
 
-https://github.com/llSourcell/lending_dapp.git
+https://github.com/llSourcell/lending_dapp.git -->
