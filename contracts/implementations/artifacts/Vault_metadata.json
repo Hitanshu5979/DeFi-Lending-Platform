@@ -1,0 +1,472 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract StableCoinToken",
+						"name": "_token",
+						"type": "address"
+					},
+					{
+						"internalType": "contract PriceConsumerV3",
+						"name": "_oracle",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "collateralDeposited",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountMinted",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "collateralWithdrawn",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountBurned",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdraw",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountToDeposit",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "repaymentAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateCollateralAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "collateralAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "depositAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateTokenAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getEthUSDPrice",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getOracle",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getToken",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					}
+				],
+				"name": "getVault",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "collateralAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "debtAmount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IVault.Vault",
+						"name": "vault",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_oracle",
+						"type": "address"
+					}
+				],
+				"name": "setOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "token",
+				"outputs": [
+					{
+						"internalType": "contract StableCoinToken",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "repaymentAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"deposit(uint256)": {
+					"params": {
+						"amountToDeposit": "The amount of ether the user sent in the transaction"
+					}
+				},
+				"estimateCollateralAmount(uint256)": {
+					"params": {
+						"repaymentAmount": "the amount of stable coin that would be repaid"
+					},
+					"returns": {
+						"collateralAmount": "the estimated amount of a vault's collateral that would be returned "
+					}
+				},
+				"estimateTokenAmount(uint256)": {
+					"params": {
+						"depositAmount": "the amount of ETH that would be deposited"
+					},
+					"returns": {
+						"tokenAmount": " the estimated amount of stablecoin that would be minted"
+					}
+				},
+				"getVault(address)": {
+					"params": {
+						"userAddress": "the address of the vault owner"
+					},
+					"returns": {
+						"vault": " the vault details"
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"withdraw(uint256)": {
+					"details": "This cannot allow a user to withdraw more than they put in",
+					"params": {
+						"repaymentAmount": "the amount of stablecoin that a user is repaying to redeem their collateral for."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"deposit(uint256)": {
+					"notice": "Allows a user to deposit ETH collateral in exchange for some amount of stablecoin"
+				},
+				"estimateCollateralAmount(uint256)": {
+					"notice": "Returns an estimate of how much collateral could be withdrawn for a given amount of stablecoin"
+				},
+				"estimateTokenAmount(uint256)": {
+					"notice": "Returns an estimate on how much stable coin could be minted at the current rate"
+				},
+				"getVault(address)": {
+					"notice": "Returns the details of a vault"
+				},
+				"withdraw(uint256)": {
+					"notice": "Allows a user to withdraw up to 100% of the collateral they have on deposit"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/implementations/Vault.sol": "Vault"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2",
+				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/ERC20.sol": {
+			"keccak256": "0x24b04b8aacaaf1a4a0719117b29c9c3647b1f479c5ac2a60f5ff1bb6d839c238",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://43e46da9d9f49741ecd876a269e71bc7494058d7a8e9478429998adb5bc3eaa0",
+				"dweb:/ipfs/QmUtp4cqzf22C5rJ76AabKADquGWcjsc33yjYXxXC4sDvy"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+				"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
+			]
+		},
+		"@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol": {
+			"keccak256": "0x8de418a5503946cabe331f35fe242d3201a73f67f77aaeb7110acb1f30423aca",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5a376d3dda2cb70536c0a45c208b29b34ac560c4cb4f513a42079f96ba47d2dd",
+				"dweb:/ipfs/QmZQg6gn1sUpM8wHzwNvSnihumUCAhxD119MpXeKp8B9s8"
+			]
+		},
+		"@openzeppelin/contracts/utils/Context.sol": {
+			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6df0ddf21ce9f58271bdfaa85cde98b200ef242a05a3f85c2bc10a8294800a92",
+				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
+			]
+		},
+		"contracts/implementations/Coin.sol": {
+			"keccak256": "0xf981f66b420d30da1053ef39fb38d68fe22d406916bf262fc84e9ec743780659",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://14c0aa2ac39b3464e56e9a0a79ecd8b5987f309635c902cf0896fbb1bb02ca7f",
+				"dweb:/ipfs/QmZRsiBAEyyP3gg9YxDJJ655Y4xuR4PxDM213ndA2HfQ74"
+			]
+		},
+		"contracts/implementations/MockOracle.sol": {
+			"keccak256": "0xefaa04f4521f9a36a45e5a0447ee99c0f56debe18b515460e492dd6984bfd197",
+			"urls": [
+				"bzz-raw://86c18957c40dd13af2c645c45886d7c9952d01a5a352d9b904959245c323747f",
+				"dweb:/ipfs/QmU4sbxZzWNUetfksZ6QeaXCN16RL765M2ZFSLHcKvmwGW"
+			]
+		},
+		"contracts/implementations/PriceConsumerV3.sol": {
+			"keccak256": "0xb47a013a2b0389ed94cf5e2583d6b2229fcbdb7e051086205a25e5f5839fa315",
+			"urls": [
+				"bzz-raw://7997c0c327bf691d93fd1c8576c6552159ed6ecc9137dc83654474a09480afb9",
+				"dweb:/ipfs/Qmemiqekw4PV3CC2vGB7oFvz7EGyVQDxpnUWaiz8fyCWhn"
+			]
+		},
+		"contracts/implementations/Vault.sol": {
+			"keccak256": "0x78f948882fe358bda7870ae5612aedc22a9a54fed4a2d37e1ae40f0980a3b02c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88495bab748040d44502694ab12d90da916e1daefcf093e4e5ac274a041ec199",
+				"dweb:/ipfs/QmemVZutZNBji6BdFxDbCH3hktMZYEENe6Uc5YC44W9EBy"
+			]
+		},
+		"contracts/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x6d04595d5f68f36186be58f14a5a20c6cafaf49ca329136af1e9f467a62bebe5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10912e3975941d5ae36a86f9a1b7991f53532cb487aa3072595a6dedf4f52fe7",
+				"dweb:/ipfs/QmSacBj3Nyhkp5UH4NQCHd9ACcTJKA6eWG97BQaebpQwCz"
+			]
+		},
+		"contracts/interfaces/ICoin.sol": {
+			"keccak256": "0x658820fb291fd23361c46a20143eb3fa70221291c727fc692933f1bbe12c8610",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://74368e4076d783b5bfc130f210188729e6cfb6228e883d12f9b9d9d32bc49380",
+				"dweb:/ipfs/QmS1LiWYWfiADZSpxcU1PGm4rPKgZuVSZshad5juVoX2AE"
+			]
+		},
+		"contracts/interfaces/IVault.sol": {
+			"keccak256": "0x026336f1a4e95d32f8072d1611b23cd473369e1d940204f486945cdf93a1bd9e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ff5091c4b8dce36727cf55db50b2927f6f8bd6c15a4ef287e1d2535d62160b66",
+				"dweb:/ipfs/Qmagh8qkz39zG8Ha23P3dWm4MgsdWehSVHD1x2Rra9eDsM"
+			]
+		}
+	},
+	"version": 1
+}

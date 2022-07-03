@@ -1,0 +1,78 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestPrice",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Network: Kovan Aggregator: ETH/USD Address: 0x9326BFA02ADD2366b30bacB125260Af641031331"
+				},
+				"getLatestPrice()": {
+					"notice": "Returns the latest price"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/implementations/PriceConsumerV3.sol": "PriceConsumerV3"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/implementations/PriceConsumerV3.sol": {
+			"keccak256": "0xb47a013a2b0389ed94cf5e2583d6b2229fcbdb7e051086205a25e5f5839fa315",
+			"urls": [
+				"bzz-raw://7997c0c327bf691d93fd1c8576c6552159ed6ecc9137dc83654474a09480afb9",
+				"dweb:/ipfs/Qmemiqekw4PV3CC2vGB7oFvz7EGyVQDxpnUWaiz8fyCWhn"
+			]
+		},
+		"contracts/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x6d04595d5f68f36186be58f14a5a20c6cafaf49ca329136af1e9f467a62bebe5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10912e3975941d5ae36a86f9a1b7991f53532cb487aa3072595a6dedf4f52fe7",
+				"dweb:/ipfs/QmSacBj3Nyhkp5UH4NQCHd9ACcTJKA6eWG97BQaebpQwCz"
+			]
+		}
+	},
+	"version": 1
+}

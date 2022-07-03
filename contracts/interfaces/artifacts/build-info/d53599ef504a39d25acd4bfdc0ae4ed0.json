@@ -1,0 +1,933 @@
+{
+	"id": "d53599ef504a39d25acd4bfdc0ae4ed0",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.7",
+	"solcLongVersion": "0.8.7+commit.e28d00a7",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"contracts/interfaces/IVault.sol": {
+				"content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n/*\n@title The interface for the vault contract\n*/\ninterface IVault {\n    // #### Struct definitions\n    struct Vault {\n        uint256 collateralAmount; // The amount of collateral held by the vault contract\n        uint256 debtAmount; // The amount of stable coin that was minted against the collateral\n    }\n\n    // #### Event definitions\n    event Deposit(uint256 collateralDeposited, uint256 amountMinted);\n    event Withdraw(uint256 collateralWithdrawn, uint256 amountBurned);\n    \n    // #### Function definitions\n\n    /**\n    @notice Allows a user to deposit ETH collateral in exchange for some amount of stablecoin\n    @param amountToDeposit  The amount of ether the user sent in the transaction\n     */\n    function deposit(uint256 amountToDeposit) payable external;\n    \n    /**\n    @notice Allows a user to withdraw up to 100% of the collateral they have on deposit\n    @dev This cannot allow a user to withdraw more than they put in\n    @param repaymentAmount  the amount of stablecoin that a user is repaying to redeem their collateral for.\n     */\n    function withdraw(uint256 repaymentAmount) external;\n    \n    /**\n    @notice Returns the details of a vault\n    @param userAddress  the address of the vault owner\n    @return vault  the vault details\n     */\n    function getVault(address userAddress) external view returns(Vault memory vault);\n    \n    /**\n    @notice Returns an estimate of how much collateral could be withdrawn for a given amount of stablecoin\n    @param repaymentAmount  the amount of stable coin that would be repaid\n    @return collateralAmount the estimated amount of a vault's collateral that would be returned \n     */\n    function estimateCollateralAmount(uint256 repaymentAmount) external view returns(uint256 collateralAmount);\n    \n    /**\n    @notice Returns an estimate on how much stable coin could be minted at the current rate\n    @param depositAmount the amount of ETH that would be deposited\n    @return tokenAmount  the estimated amount of stablecoin that would be minted\n     */\n    function estimateTokenAmount(uint256 depositAmount) external view returns(uint256 tokenAmount);\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"contracts": {
+			"contracts/interfaces/IVault.sol": {
+				"IVault": {
+					"abi": [
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": false,
+									"internalType": "uint256",
+									"name": "collateralDeposited",
+									"type": "uint256"
+								},
+								{
+									"indexed": false,
+									"internalType": "uint256",
+									"name": "amountMinted",
+									"type": "uint256"
+								}
+							],
+							"name": "Deposit",
+							"type": "event"
+						},
+						{
+							"anonymous": false,
+							"inputs": [
+								{
+									"indexed": false,
+									"internalType": "uint256",
+									"name": "collateralWithdrawn",
+									"type": "uint256"
+								},
+								{
+									"indexed": false,
+									"internalType": "uint256",
+									"name": "amountBurned",
+									"type": "uint256"
+								}
+							],
+							"name": "Withdraw",
+							"type": "event"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "amountToDeposit",
+									"type": "uint256"
+								}
+							],
+							"name": "deposit",
+							"outputs": [],
+							"stateMutability": "payable",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "repaymentAmount",
+									"type": "uint256"
+								}
+							],
+							"name": "estimateCollateralAmount",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "collateralAmount",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "depositAmount",
+									"type": "uint256"
+								}
+							],
+							"name": "estimateTokenAmount",
+							"outputs": [
+								{
+									"internalType": "uint256",
+									"name": "tokenAmount",
+									"type": "uint256"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "address",
+									"name": "userAddress",
+									"type": "address"
+								}
+							],
+							"name": "getVault",
+							"outputs": [
+								{
+									"components": [
+										{
+											"internalType": "uint256",
+											"name": "collateralAmount",
+											"type": "uint256"
+										},
+										{
+											"internalType": "uint256",
+											"name": "debtAmount",
+											"type": "uint256"
+										}
+									],
+									"internalType": "struct IVault.Vault",
+									"name": "vault",
+									"type": "tuple"
+								}
+							],
+							"stateMutability": "view",
+							"type": "function"
+						},
+						{
+							"inputs": [
+								{
+									"internalType": "uint256",
+									"name": "repaymentAmount",
+									"type": "uint256"
+								}
+							],
+							"name": "withdraw",
+							"outputs": [],
+							"stateMutability": "nonpayable",
+							"type": "function"
+						}
+					],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {
+							"deposit(uint256)": {
+								"params": {
+									"amountToDeposit": "The amount of ether the user sent in the transaction"
+								}
+							},
+							"estimateCollateralAmount(uint256)": {
+								"params": {
+									"repaymentAmount": "the amount of stable coin that would be repaid"
+								},
+								"returns": {
+									"collateralAmount": "the estimated amount of a vault's collateral that would be returned "
+								}
+							},
+							"estimateTokenAmount(uint256)": {
+								"params": {
+									"depositAmount": "the amount of ETH that would be deposited"
+								},
+								"returns": {
+									"tokenAmount": " the estimated amount of stablecoin that would be minted"
+								}
+							},
+							"getVault(address)": {
+								"params": {
+									"userAddress": "the address of the vault owner"
+								},
+								"returns": {
+									"vault": " the vault details"
+								}
+							},
+							"withdraw(uint256)": {
+								"details": "This cannot allow a user to withdraw more than they put in",
+								"params": {
+									"repaymentAmount": "the amount of stablecoin that a user is repaying to redeem their collateral for."
+								}
+							}
+						},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "",
+							"opcodes": "",
+							"sourceMap": ""
+						},
+						"gasEstimates": null,
+						"legacyAssembly": null,
+						"methodIdentifiers": {
+							"deposit(uint256)": "b6b55f25",
+							"estimateCollateralAmount(uint256)": "56bfdaf5",
+							"estimateTokenAmount(uint256)": "1b05ab79",
+							"getVault(address)": "0eb9af38",
+							"withdraw(uint256)": "2e1a7d4d"
+						}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.7+commit.e28d00a7\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"collateralDeposited\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountMinted\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"collateralWithdrawn\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amountBurned\",\"type\":\"uint256\"}],\"name\":\"Withdraw\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amountToDeposit\",\"type\":\"uint256\"}],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"repaymentAmount\",\"type\":\"uint256\"}],\"name\":\"estimateCollateralAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"collateralAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"depositAmount\",\"type\":\"uint256\"}],\"name\":\"estimateTokenAmount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"tokenAmount\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"userAddress\",\"type\":\"address\"}],\"name\":\"getVault\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"collateralAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"debtAmount\",\"type\":\"uint256\"}],\"internalType\":\"struct IVault.Vault\",\"name\":\"vault\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"repaymentAmount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"deposit(uint256)\":{\"params\":{\"amountToDeposit\":\"The amount of ether the user sent in the transaction\"}},\"estimateCollateralAmount(uint256)\":{\"params\":{\"repaymentAmount\":\"the amount of stable coin that would be repaid\"},\"returns\":{\"collateralAmount\":\"the estimated amount of a vault's collateral that would be returned \"}},\"estimateTokenAmount(uint256)\":{\"params\":{\"depositAmount\":\"the amount of ETH that would be deposited\"},\"returns\":{\"tokenAmount\":\" the estimated amount of stablecoin that would be minted\"}},\"getVault(address)\":{\"params\":{\"userAddress\":\"the address of the vault owner\"},\"returns\":{\"vault\":\" the vault details\"}},\"withdraw(uint256)\":{\"details\":\"This cannot allow a user to withdraw more than they put in\",\"params\":{\"repaymentAmount\":\"the amount of stablecoin that a user is repaying to redeem their collateral for.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"deposit(uint256)\":{\"notice\":\"Allows a user to deposit ETH collateral in exchange for some amount of stablecoin\"},\"estimateCollateralAmount(uint256)\":{\"notice\":\"Returns an estimate of how much collateral could be withdrawn for a given amount of stablecoin\"},\"estimateTokenAmount(uint256)\":{\"notice\":\"Returns an estimate on how much stable coin could be minted at the current rate\"},\"getVault(address)\":{\"notice\":\"Returns the details of a vault\"},\"withdraw(uint256)\":{\"notice\":\"Allows a user to withdraw up to 100% of the collateral they have on deposit\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/interfaces/IVault.sol\":\"IVault\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/interfaces/IVault.sol\":{\"keccak256\":\"0x026336f1a4e95d32f8072d1611b23cd473369e1d940204f486945cdf93a1bd9e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ff5091c4b8dce36727cf55db50b2927f6f8bd6c15a4ef287e1d2535d62160b66\",\"dweb:/ipfs/Qmagh8qkz39zG8Ha23P3dWm4MgsdWehSVHD1x2Rra9eDsM\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {
+							"deposit(uint256)": {
+								"notice": "Allows a user to deposit ETH collateral in exchange for some amount of stablecoin"
+							},
+							"estimateCollateralAmount(uint256)": {
+								"notice": "Returns an estimate of how much collateral could be withdrawn for a given amount of stablecoin"
+							},
+							"estimateTokenAmount(uint256)": {
+								"notice": "Returns an estimate on how much stable coin could be minted at the current rate"
+							},
+							"getVault(address)": {
+								"notice": "Returns the details of a vault"
+							},
+							"withdraw(uint256)": {
+								"notice": "Allows a user to withdraw up to 100% of the collateral they have on deposit"
+							}
+						},
+						"version": 1
+					}
+				}
+			}
+		},
+		"sources": {
+			"contracts/interfaces/IVault.sol": {
+				"ast": {
+					"absolutePath": "contracts/interfaces/IVault.sol",
+					"exportedSymbols": {
+						"IVault": [
+							56
+						]
+					},
+					"id": 57,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0.8",
+								".0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "32:23:0"
+						},
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"contractDependencies": [],
+							"contractKind": "interface",
+							"fullyImplemented": false,
+							"id": 56,
+							"linearizedBaseContracts": [
+								56
+							],
+							"name": "IVault",
+							"nameLocation": "117:6:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "IVault.Vault",
+									"id": 6,
+									"members": [
+										{
+											"constant": false,
+											"id": 3,
+											"mutability": "mutable",
+											"name": "collateralAmount",
+											"nameLocation": "192:16:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 6,
+											"src": "184:24:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 2,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "184:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										},
+										{
+											"constant": false,
+											"id": 5,
+											"mutability": "mutable",
+											"name": "debtAmount",
+											"nameLocation": "281:10:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 6,
+											"src": "273:18:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint256",
+												"typeString": "uint256"
+											},
+											"typeName": {
+												"id": 4,
+												"name": "uint256",
+												"nodeType": "ElementaryTypeName",
+												"src": "273:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "Vault",
+									"nameLocation": "168:5:0",
+									"nodeType": "StructDefinition",
+									"scope": 56,
+									"src": "161:205:0",
+									"visibility": "public"
+								},
+								{
+									"anonymous": false,
+									"id": 12,
+									"name": "Deposit",
+									"nameLocation": "408:7:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 11,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 8,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "collateralDeposited",
+												"nameLocation": "424:19:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "416:27:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 7,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "416:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 10,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "amountMinted",
+												"nameLocation": "453:12:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 12,
+												"src": "445:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 9,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "445:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "415:51:0"
+									},
+									"src": "402:65:0"
+								},
+								{
+									"anonymous": false,
+									"id": 18,
+									"name": "Withdraw",
+									"nameLocation": "478:8:0",
+									"nodeType": "EventDefinition",
+									"parameters": {
+										"id": 17,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 14,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "collateralWithdrawn",
+												"nameLocation": "495:19:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 18,
+												"src": "487:27:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 13,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "487:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 16,
+												"indexed": false,
+												"mutability": "mutable",
+												"name": "amountBurned",
+												"nameLocation": "524:12:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 18,
+												"src": "516:20:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 15,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "516:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "486:51:0"
+									},
+									"src": "472:66:0"
+								},
+								{
+									"documentation": {
+										"id": 19,
+										"nodeType": "StructuredDocumentation",
+										"src": "582:186:0",
+										"text": "@notice Allows a user to deposit ETH collateral in exchange for some amount of stablecoin\n@param amountToDeposit  The amount of ether the user sent in the transaction"
+									},
+									"functionSelector": "b6b55f25",
+									"id": 24,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "deposit",
+									"nameLocation": "782:7:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 22,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 21,
+												"mutability": "mutable",
+												"name": "amountToDeposit",
+												"nameLocation": "798:15:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 24,
+												"src": "790:23:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 20,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "790:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "789:25:0"
+									},
+									"returnParameters": {
+										"id": 23,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "831:0:0"
+									},
+									"scope": 56,
+									"src": "773:59:0",
+									"stateMutability": "payable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 25,
+										"nodeType": "StructuredDocumentation",
+										"src": "842:276:0",
+										"text": "@notice Allows a user to withdraw up to 100% of the collateral they have on deposit\n@dev This cannot allow a user to withdraw more than they put in\n@param repaymentAmount  the amount of stablecoin that a user is repaying to redeem their collateral for."
+									},
+									"functionSelector": "2e1a7d4d",
+									"id": 30,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "withdraw",
+									"nameLocation": "1132:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 28,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 27,
+												"mutability": "mutable",
+												"name": "repaymentAmount",
+												"nameLocation": "1149:15:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 30,
+												"src": "1141:23:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 26,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1141:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1140:25:0"
+									},
+									"returnParameters": {
+										"id": 29,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "1174:0:0"
+									},
+									"scope": 56,
+									"src": "1123:52:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 31,
+										"nodeType": "StructuredDocumentation",
+										"src": "1185:146:0",
+										"text": "@notice Returns the details of a vault\n@param userAddress  the address of the vault owner\n@return vault  the vault details"
+									},
+									"functionSelector": "0eb9af38",
+									"id": 39,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "getVault",
+									"nameLocation": "1345:8:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 34,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 33,
+												"mutability": "mutable",
+												"name": "userAddress",
+												"nameLocation": "1362:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 39,
+												"src": "1354:19:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 32,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "1354:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1353:21:0"
+									},
+									"returnParameters": {
+										"id": 38,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 37,
+												"mutability": "mutable",
+												"name": "vault",
+												"nameLocation": "1410:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 39,
+												"src": "1397:18:0",
+												"stateVariable": false,
+												"storageLocation": "memory",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Vault_$6_memory_ptr",
+													"typeString": "struct IVault.Vault"
+												},
+												"typeName": {
+													"id": 36,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 35,
+														"name": "Vault",
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 6,
+														"src": "1397:5:0"
+													},
+													"referencedDeclaration": 6,
+													"src": "1397:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Vault_$6_storage_ptr",
+														"typeString": "struct IVault.Vault"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1396:20:0"
+									},
+									"scope": 56,
+									"src": "1336:81:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 40,
+										"nodeType": "StructuredDocumentation",
+										"src": "1427:291:0",
+										"text": "@notice Returns an estimate of how much collateral could be withdrawn for a given amount of stablecoin\n@param repaymentAmount  the amount of stable coin that would be repaid\n@return collateralAmount the estimated amount of a vault's collateral that would be returned "
+									},
+									"functionSelector": "56bfdaf5",
+									"id": 47,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "estimateCollateralAmount",
+									"nameLocation": "1732:24:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 43,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 42,
+												"mutability": "mutable",
+												"name": "repaymentAmount",
+												"nameLocation": "1765:15:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 47,
+												"src": "1757:23:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 41,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1757:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1756:25:0"
+									},
+									"returnParameters": {
+										"id": 46,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 45,
+												"mutability": "mutable",
+												"name": "collateralAmount",
+												"nameLocation": "1812:16:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 47,
+												"src": "1804:24:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 44,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "1804:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "1803:26:0"
+									},
+									"scope": 56,
+									"src": "1723:107:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								},
+								{
+									"documentation": {
+										"id": 48,
+										"nodeType": "StructuredDocumentation",
+										"src": "1840:251:0",
+										"text": "@notice Returns an estimate on how much stable coin could be minted at the current rate\n@param depositAmount the amount of ETH that would be deposited\n@return tokenAmount  the estimated amount of stablecoin that would be minted"
+									},
+									"functionSelector": "1b05ab79",
+									"id": 55,
+									"implemented": false,
+									"kind": "function",
+									"modifiers": [],
+									"name": "estimateTokenAmount",
+									"nameLocation": "2105:19:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 51,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 50,
+												"mutability": "mutable",
+												"name": "depositAmount",
+												"nameLocation": "2133:13:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 55,
+												"src": "2125:21:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 49,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2125:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2124:23:0"
+									},
+									"returnParameters": {
+										"id": 54,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 53,
+												"mutability": "mutable",
+												"name": "tokenAmount",
+												"nameLocation": "2178:11:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 55,
+												"src": "2170:19:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint256",
+													"typeString": "uint256"
+												},
+												"typeName": {
+													"id": 52,
+													"name": "uint256",
+													"nodeType": "ElementaryTypeName",
+													"src": "2170:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint256",
+														"typeString": "uint256"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "2169:21:0"
+									},
+									"scope": 56,
+									"src": "2096:95:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "external"
+								}
+							],
+							"scope": 57,
+							"src": "107:2086:0",
+							"usedErrors": []
+						}
+					],
+					"src": "32:2161:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

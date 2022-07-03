@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.0",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@truffle/hdwallet-provider": "^1.5.1",
+    "bootstrap": "^5.2.0-beta1",
+    "dotenv": "^10.0.0",
+    "web3": "^0.20.7"
+  },
+  "devDependencies": {
+    "@types/web3": "^1.2.2"
+  }
+}

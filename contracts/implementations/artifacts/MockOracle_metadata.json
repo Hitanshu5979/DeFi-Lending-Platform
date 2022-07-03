@@ -1,0 +1,84 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestPrice",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int256",
+						"name": "_price",
+						"type": "int256"
+					}
+				],
+				"name": "setPrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/implementations/MockOracle.sol": "MockOracle"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/implementations/MockOracle.sol": {
+			"keccak256": "0xefaa04f4521f9a36a45e5a0447ee99c0f56debe18b515460e492dd6984bfd197",
+			"urls": [
+				"bzz-raw://86c18957c40dd13af2c645c45886d7c9952d01a5a352d9b904959245c323747f",
+				"dweb:/ipfs/QmU4sbxZzWNUetfksZ6QeaXCN16RL765M2ZFSLHcKvmwGW"
+			]
+		},
+		"contracts/interfaces/AggregatorV3Interface.sol": {
+			"keccak256": "0x6d04595d5f68f36186be58f14a5a20c6cafaf49ca329136af1e9f467a62bebe5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://10912e3975941d5ae36a86f9a1b7991f53532cb487aa3072595a6dedf4f52fe7",
+				"dweb:/ipfs/QmSacBj3Nyhkp5UH4NQCHd9ACcTJKA6eWG97BQaebpQwCz"
+			]
+		}
+	},
+	"version": 1
+}

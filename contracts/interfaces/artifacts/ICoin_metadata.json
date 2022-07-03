@@ -1,0 +1,114 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "burn",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "mint",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"burn(address,uint256)": {
+					"params": {
+						"account": "the account to burn the tokens from",
+						"amount": "the amount to be burned"
+					}
+				},
+				"mint(address,uint256)": {
+					"params": {
+						"account": "the account to receive the new tokens",
+						"amount": "the amount to be minted"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"burn(address,uint256)": {
+					"notice": "Burns a specified amount of tokens from an account"
+				},
+				"mint(address,uint256)": {
+					"notice": "Mints a specified amount of tokens to an account"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/ICoin.sol": "ICoin"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/ICoin.sol": {
+			"keccak256": "0x658820fb291fd23361c46a20143eb3fa70221291c727fc692933f1bbe12c8610",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://74368e4076d783b5bfc130f210188729e6cfb6228e883d12f9b9d9d32bc49380",
+				"dweb:/ipfs/QmS1LiWYWfiADZSpxcU1PGm4rPKgZuVSZshad5juVoX2AE"
+			]
+		}
+	},
+	"version": 1
+}

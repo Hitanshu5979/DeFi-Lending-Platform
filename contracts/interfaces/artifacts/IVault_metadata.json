@@ -1,0 +1,231 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "collateralDeposited",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountMinted",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "collateralWithdrawn",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountBurned",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdraw",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amountToDeposit",
+						"type": "uint256"
+					}
+				],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "repaymentAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateCollateralAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "collateralAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "depositAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "estimateTokenAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					}
+				],
+				"name": "getVault",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "collateralAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "debtAmount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct IVault.Vault",
+						"name": "vault",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "repaymentAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"deposit(uint256)": {
+					"params": {
+						"amountToDeposit": "The amount of ether the user sent in the transaction"
+					}
+				},
+				"estimateCollateralAmount(uint256)": {
+					"params": {
+						"repaymentAmount": "the amount of stable coin that would be repaid"
+					},
+					"returns": {
+						"collateralAmount": "the estimated amount of a vault's collateral that would be returned "
+					}
+				},
+				"estimateTokenAmount(uint256)": {
+					"params": {
+						"depositAmount": "the amount of ETH that would be deposited"
+					},
+					"returns": {
+						"tokenAmount": " the estimated amount of stablecoin that would be minted"
+					}
+				},
+				"getVault(address)": {
+					"params": {
+						"userAddress": "the address of the vault owner"
+					},
+					"returns": {
+						"vault": " the vault details"
+					}
+				},
+				"withdraw(uint256)": {
+					"details": "This cannot allow a user to withdraw more than they put in",
+					"params": {
+						"repaymentAmount": "the amount of stablecoin that a user is repaying to redeem their collateral for."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"deposit(uint256)": {
+					"notice": "Allows a user to deposit ETH collateral in exchange for some amount of stablecoin"
+				},
+				"estimateCollateralAmount(uint256)": {
+					"notice": "Returns an estimate of how much collateral could be withdrawn for a given amount of stablecoin"
+				},
+				"estimateTokenAmount(uint256)": {
+					"notice": "Returns an estimate on how much stable coin could be minted at the current rate"
+				},
+				"getVault(address)": {
+					"notice": "Returns the details of a vault"
+				},
+				"withdraw(uint256)": {
+					"notice": "Allows a user to withdraw up to 100% of the collateral they have on deposit"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/interfaces/IVault.sol": "IVault"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/interfaces/IVault.sol": {
+			"keccak256": "0x026336f1a4e95d32f8072d1611b23cd473369e1d940204f486945cdf93a1bd9e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ff5091c4b8dce36727cf55db50b2927f6f8bd6c15a4ef287e1d2535d62160b66",
+				"dweb:/ipfs/Qmagh8qkz39zG8Ha23P3dWm4MgsdWehSVHD1x2Rra9eDsM"
+			]
+		}
+	},
+	"version": 1
+}
